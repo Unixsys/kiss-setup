@@ -7,9 +7,9 @@ ROOT="/dev/sda1"
 
 VERSION="1.11.0"
 
-sudo umount root || true
+umount root || true
 
-sudo rm -fR root kiss-chroot*
+rm -fR root kiss-chroot*
 mkdir root
 
 wget https://github.com/kisslinux/repo/releases/download/${VERSION}/kiss-chroot.tar.xz
@@ -30,17 +30,15 @@ a
 w
 EOF
 
-sudo mkfs.ext4 $ROOT
-sudo mount $ROOT root
+mkfs.ext4 $ROOT
+mount $ROOT root
 
-sudo tar xf kiss-chroot.tar.xz -C root --strip-components 1
+tar xf kiss-chroot.tar.xz -C root --strip-components 1
 
-sudo cp stage2.sh root/
+cp stage2.sh root/
 
-printf "Run ./stage2.sh in the chroot...\n"
+printf "Run ./stage2.sh\n"
 
-sudo ./kiss-chroot ./root
+./kiss-chroot ./root
 
-sudo umount root
-
-printf "Success!\n"
+umount root

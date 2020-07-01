@@ -52,16 +52,16 @@ cd ..
 
 rm -fR linux-${KERNEL_VERSION}*
 
-echo | kiss build grub
+printf '\n' | kiss build grub
 kiss install grub
 
 grub-install $LOOP
 grub-mkconfig -o /boot/grub/grub.cfg
 
-echo | kiss build baseinit
+printf '\n' | kiss build baseinit
 kiss install baseinit
 
 rm stage2.sh
 rm -r /root/.cache
 
-echo "Stage2 complete, please exit this chroot..."
+printf "Exit chroot\n"
