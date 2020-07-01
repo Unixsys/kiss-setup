@@ -9,7 +9,7 @@ VERSION="1.11.0"
 
 sudo umount root || true
 
-sudo rm -fR root kiss-chroot* kiss.img
+sudo rm -fR root kiss-chroot*
 mkdir root
 
 wget https://github.com/kisslinux/repo/releases/download/${VERSION}/kiss-chroot.tar.xz
