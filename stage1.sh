@@ -19,7 +19,7 @@ chmod 755 kiss-chroot
 wget https://github.com/kisslinux/repo/releases/download/${VERSION}/kiss-chroot.tar.xz.sha256
 sha256sum -c < kiss-chroot.tar.xz.sha256
 
-fdisk /dev/sda <<EOF
+fdisk $LOOP <<EOF
 o
 n
 p
