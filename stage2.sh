@@ -13,6 +13,14 @@ for pkg in e2fsprogs dosfstools util-linux eudev dhcpcd libelf ncurses perl; do
   kiss install $pkg
 done
 
+cd /dev/shm
+git clone https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/
+mkdir -p /usr/lib/firmware
+cd linux-firmware
+for i in $(ls | grep iwlwifi-); do
+  mv $i /usr/lib/firmware
+done
+
 KERNEL_VERSION="5.6.14"
 wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL_VERSION}.tar.xz
 tar xf linux-${KERNEL_VERSION}.tar.xz
