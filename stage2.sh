@@ -17,8 +17,11 @@ cd /dev/shm
 git clone https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/
 mkdir -p /usr/lib/firmware
 cd linux-firmware
-for i in $(ls | grep iwlwifi-); do
-  mv $i /usr/lib/firmware
+for i in $(ls); do
+[ -d $i ] && cd $i && mv * ../ && cd - && rm -r $i && continue
+done
+for i in $(ls); do
+mv $i /usr/lib/firmware
 done
 
 KERNEL_VERSION="5.6.14"
